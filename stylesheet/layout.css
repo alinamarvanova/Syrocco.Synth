@@ -1,0 +1,383 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #dcdbd0;
+  --panel: #edebdf;
+  --panel-hover: #e5e2d4;
+  --ink: #6d6d6d;
+  --ink-dark: #333333;
+  --line: #c4c4c4;
+  --accent: #c95441;
+  --accent-dark: #b34736;
+  --track-fill: var(--ink);
+}
+
+body.is-playing {
+  --track-fill: var(--accent);
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  font-family: "Arial Narrow", Arial, sans-serif;
+  min-height: 100vh;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1132px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ---------- 1 этаж ---------- */
+.first_floor_button {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+}
+
+.btn_control {
+  appearance: none;
+  border: none;
+  background-color: var(--panel);
+  width: 200px;
+  height: 110px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.12s ease, box-shadow 0.2s ease;
+}
+.btn_control:hover {
+  background-color: var(--panel-hover);
+}
+.btn_control:active {
+  transform: scale(0.97);
+}
+.btn_control.is-active {
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+.btn_control:focus-visible,
+.preset-btn:focus-visible,
+.slider:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.header-slider {
+  flex: 1;
+  height: 110px;
+  background-color: var(--panel);
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  padding: 0 40px;
+}
+
+.header-slider__label {
+  font-size: 20px;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+
+/* ---------- 2 этаж ---------- */
+.panels {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.panel {
+  background-color: var(--panel);
+  border-radius: 40px;
+  padding: 40px;
+  min-height: 599px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+}
+
+.panel-head {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+h1 {
+  margin: 0;
+  font-family: "Gabriela", serif;
+  font-weight: 400;
+  font-size: 46px;
+  color: var(--ink);
+}
+
+.panel-sub {
+  font-family: "Noto Naskh Arabic", serif;
+  font-size: 22px;
+  color: var(--accent);
+  line-height: 1.2;
+}
+
+.scope {
+  width: 100%;
+  height: 48px;
+  margin-top: 8px;
+  display: block;
+}
+
+.preset-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.preset-btn {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--ink);
+  border-radius: 100px;
+  padding: 10px 20px;
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--ink-dark);
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.12s ease;
+}
+.preset-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.preset-btn:active {
+  transform: scale(0.96);
+}
+.preset-btn.active {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--panel);
+  font-weight: 500;
+}
+.preset-btn.active:hover {
+  background-color: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: #ffffff;
+}
+
+
+/* ---------- слайдеры ---------- */
+.sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  width: 100%;
+}
+
+.slider-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.slider-label {
+  font-size: 20px;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+
+.slider {
+  --fill: 20%;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 20px;
+  background: transparent;
+  cursor: pointer;
+}
+.slider--header {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Chrome / Safari */
+.slider::-webkit-slider-runnable-track {
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(to right, var(--track-fill) var(--fill), var(--line) var(--fill));
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: none;
+  margin-top: -9px;
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+.slider:hover::-webkit-slider-thumb {
+  transform: scale(1.15);
+}
+body.is-playing .slider::-webkit-slider-thumb {
+  background: var(--accent);
+}
+
+/* Firefox */
+.slider::-moz-range-track {
+  height: 2px;
+  border-radius: 2px;
+  background: var(--line);
+}
+.slider::-moz-range-progress {
+  height: 2px;
+  border-radius: 2px;
+  background: var(--track-fill);
+}
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: none;
+}
+body.is-playing .slider::-moz-range-thumb {
+  background: var(--accent);
+}
+
+/* ---------- макам ---------- */
+.maqam-bar {
+  background-color: var(--panel);
+  border-radius: 40px;
+  min-height: 90px;
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.maqam-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 150px;
+}
+.maqam-title__en {
+  font-size: 20px;
+  color: var(--ink);
+}
+.maqam-title__ar {
+  font-family: "Noto Naskh Arabic", serif;
+  font-size: 24px;
+  color: var(--accent);
+}
+.maqam-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+/* линейка лада: октава D–D, точки стоят по реальным интервалам */
+.maqam-ruler {
+  position: relative;
+  flex: 1;
+  min-width: 140px;
+  height: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.ruler-dot {
+  position: absolute;
+  bottom: -5px;
+  width: 9px;
+  height: 9px;
+  margin-left: -4.5px;
+  border-radius: 50%;
+  background: var(--ink);
+  transition: left 0.4s ease, background-color 0.3s ease;
+}
+.ruler-dot.is-quarter {
+  background: var(--accent);
+}
+
+/* ---------- песочное поле ---------- */
+.sand-panel {
+  background-color: var(--panel);
+  border-radius: 40px;
+  padding: 32px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.sand-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+h2 {
+  margin: 0;
+  font-family: "Gabriela", serif;
+  font-weight: 400;
+  font-size: 36px;
+  color: var(--ink);
+}
+.sand {
+  display: block;
+  width: 100%;
+  height: 360px;
+  border-radius: 24px;
+  background-color: #e8e2d0;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+/* ---------- узкие экраны ---------- */
+@media (max-width: 760px) {
+  .first_floor_button {
+    flex-wrap: wrap;
+  }
+  .btn_control {
+    flex: 1;
+    width: auto;
+  }
+  .header-slider {
+    flex-basis: 100%;
+    padding: 0 24px;
+  }
+  .panels {
+    flex-direction: column;
+  }
+  .panel {
+    min-height: 0;
+    padding: 32px 24px;
+  }
+  .maqam-bar {
+    flex-wrap: wrap;
+    padding: 20px 24px;
+    gap: 16px;
+  }
+  .maqam-ruler {
+    flex-basis: 100%;
+  }
+  .sand-panel {
+    padding: 24px;
+  }
+}
+

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sirocco.synth</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gabriela&family=Noto+Naskh+Arabic&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="stylesheet/style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- 1 этаж-->
+      <div class="first_floor_button">
+        <button class="btn_control is-active" id="pauseBtn" aria-label="Пауза">
+          <img src="img/icon_pause.svg" alt="" />
+        </button>
+        <button class="btn_control" id="playBtn" aria-label="Играть">
+          <img src="img/play.svg" alt="" />
+        </button>
+
+        <div class="header-slider">
+          <span class="header-slider__label">DESERT</span>
+          <input
+            type="range"
+            class="slider slider--header"
+            data-param="mix"
+            min="0"
+            max="100"
+            value="20"
+            aria-label="Баланс DESERT / CARAVAN"
+          />
+          <span class="header-slider__label">CARAVAN</span>
+        </div>
+      </div>
+
+      <!-- макам -->
+      <div class="maqam-bar">
+        <div class="maqam-title">
+          <span class="maqam-title__en">MAQAM</span>
+          <span class="maqam-title__ar" id="maqamAr" lang="ar">حجاز</span>
+        </div>
+        <div class="maqam-buttons">
+          <button class="preset-btn maqam-btn active" data-maqam="hijaz">HIJAZ</button>
+          <button class="preset-btn maqam-btn" data-maqam="rast">RAST</button>
+          <button class="preset-btn maqam-btn" data-maqam="bayati">BAYATI</button>
+          <button class="preset-btn maqam-btn" data-maqam="saba">SABA</button>
+        </div>
+        <div class="maqam-ruler" id="maqamRuler" aria-hidden="true"></div>
+      </div>
+
+      <!-- 2 этаж -->
+      <div class="second_floor_button">
+        <div class="panels">
+          <!-- DESERT -->
+          <div class="panel" data-side="desert">
+            <div class="panel-head">
+              <h1>DESERT</h1>
+              <span class="panel-sub" lang="ar">صحراء</span>
+              <canvas class="scope" data-scope="desert" aria-hidden="true"></canvas>
+            </div>
+
+            <div class="preset-buttons">
+              <button class="preset-btn active" data-preset="awakening">AWAKENING</button>
+              <button class="preset-btn" data-preset="scorch">SCORCH</button>
+              <button class="preset-btn" data-preset="fury">FURY</button>
+              <button class="preset-btn" data-preset="silence">SILENCE</button>
+            </div>
+
+            <div class="sliders">
+              <div class="slider-group">
+                <label class="slider-label" for="force">FORCE</label>
+                <input type="range" class="slider" id="force" data-param="force" min="0" max="100" value="20" />
+              </div>
+              <div class="slider-group">
+                <label class="slider-label" for="movement">MOVEMENT</label>
+                <input type="range" class="slider" id="movement" data-param="movement" min="0" max="100" value="20" />
+              </div>
+              <div class="slider-group">
+                <label class="slider-label" for="dust">DUST</label>
+                <input type="range" class="slider" id="dust" data-param="dust" min="0" max="100" value="20" />
+              </div>
+              <div class="slider-group">
+                <label class="slider-label" for="horizon">HORIZON</label>
+                <input type="range" class="slider" id="horizon" data-param="horizon" min="0" max="100" value="20" />
+              </div>
+            </div>
+          </div>
+
+          <!-- CARAVAN -->
+          <div class="panel" data-side="caravan">
+            <div class="panel-head">
+              <h1>CARAVAN</h1>
+              <span class="panel-sub" lang="ar">قافلة</span>
+              <canvas class="scope" data-scope="caravan" aria-hidden="true"></canvas>
+            </div>
+
+            <div class="preset-buttons">
+              <button class="preset-btn active" data-preset="conversation">CONVERSATION</button>
+              <button class="preset-btn" data-preset="song">SONG</button>
+              <button class="preset-btn" data-preset="whisper">WHISPER</button>
+              <button class="preset-btn" data-preset="chant">CHANT</button>
+            </div>
+
+            <div class="sliders">
+              <div class="slider-group">
+                <label class="slider-label" for="presence">PRESENCE</label>
+                <input type="range" class="slider" id="presence" data-param="presence" min="0" max="100" value="20" />
+              </div>
+              <div class="slider-group">
+                <label class="slider-label" for="distance">DISTANCE</label>
+                <input type="range" class="slider" id="distance" data-param="distance" min="0" max="100" value="20" />
+              </div>
+              <div class="slider-group">
+                <label class="slider-label" for="echo">ECHO</label>
+                <input type="range" class="slider" id="echo" data-param="echo" min="0" max="100" value="20" />
+              </div>
+              <div class="slider-group">
+                <label class="slider-label" for="spirit">SPIRIT</label>
+                <input type="range" class="slider" id="spirit" data-param="spirit" min="0" max="100" value="20" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- рисунок на песке -->
+      <div class="sand-panel">
+        <div class="sand-head">
+          <h2>SAND</h2>
+          <span class="panel-sub" lang="ar">رمل</span>
+        </div>
+        <canvas class="sand" id="sand" aria-label="Песочное поле: рисуйте, чтобы играть"></canvas>
+      </div>
+    </div>
+    <script src="synth.js"></script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "Arial Narrow";
+  src: url(../fonts/arialnarrow_bold.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Arial Narrow";
+  src: url(../fonts/arialnarrow_bolditalic.ttf) format("truetype");
+  font-style: italic;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Arial Narrow";
+  src: url(../fonts/arialnarrow.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Arial Narrow";
+  src: url(../fonts/arialnarrow_italic.ttf) format("truetype");
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Gabriela";
+  src: url(../fonts/Gabriela-Regular.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
